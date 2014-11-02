@@ -25,12 +25,8 @@ class Config extends \Mod\Config
         parent::init($sitePath, $siteUrl);
 
         // User auth config
-        $this->parseConfigFile($this->getLibPath().'/auth-user/config/auth-user.php');
-        $this->parseConfigFile($this->getLibPath().'/auth-user/config/dispatch.php');
-
-        // Mail config
-        $this->parseConfigFile($this->getLibPath().'/mail/config/mail.php');
-        $this->parseConfigFile($this->getLibPath().'/mail/config/dispatch.php');
+        $this->parseConfigFile($this->getLibPath().'/tk-user/config/auth-user.php');
+        $this->parseConfigFile($this->getLibPath().'/tk-user/config/dispatch.php');
 
         // Local config files
         $this->parseConfigFile(dirname(dirname(__FILE__)).'/config/localSystem.php');
