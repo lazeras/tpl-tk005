@@ -9,7 +9,7 @@
     "time": "2012-12-09",
     "license": "MIT",
     "version": "trunk",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "authors":  [
          {
             "name": "Michael Mifsud",
