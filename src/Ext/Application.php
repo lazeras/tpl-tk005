@@ -58,12 +58,13 @@ class Application extends \Tk\Application
     protected function run()
     {
         // Attach all FC commands
+        $this->frontAttach(new \Ext\Controller\MonoLog());
         $this->frontAttach(new \Tk\Controller\StartLog());
 
         // Add Build From Request Controllers
         $this->frontAttach(new \Mod\Controller\Dispatch());
         $this->frontAttach(new \Ext\Controller\PageClass());
-        $this->frontAttach(new \Usr\Controller\Auth());
+        $this->frontAttach(new \Tk\Auth\Controller\Auth());
         $this->frontAttach(new \Mod\Controller\Theme());
         $this->frontAttach(new \Mod\Controller\BuildModules());
         

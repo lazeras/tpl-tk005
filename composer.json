@@ -11,7 +11,7 @@
     "version": "trunk",
     "minimum-stability": "dev",
     "authors":  [
-         {
+        {
             "name": "Michael Mifsud",
             "email": "info@tropotek.com.au",
             "homepage": "http://www.tropotek.com/"
@@ -33,22 +33,45 @@
             "config\\ComposerEvent::postUpdate"
         ]
     },
+
+
+
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packagist.kaoses.com/"
+        }
+    ],
+
+
     "require":  {
         "php": ">=5.3.2",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-gd": "*",
         "ttek/tk-installers": "~1.0",
-        "ttek/tk-domtemplate": "~1.0",
-        "ttek/tk-framework": "~1.0",
-        "ttek/tk-modlib": "~1.0",
-        "ttek/tk-form": "~1.0",
+        "ttek/tk-domtemplate": "1.2.*@dev",
+        "ttek/tk-framework": "1.2.*@dev",
+        "ttek/tk-modlib": "1.2.*@dev",
+        "ttek/tk-form": "1.2.*@dev",
         "ttek/tk-table": "~1.0",
-        "ttek/tk-plugin": "~1.0",
+        "ttek/tk-plugin": "1.2.*@dev",
         "ttek/tk-user": "~1.0",
         "ttek/tk-map": "~1.0",
         "ttek/tk-jslib": "~1.0",
-        "leafo/lessphp": "~0.0"
+        "leafo/lessphp": "~0.0",
+
+        "kaoses/Kdo": "dev-master",
+        "psr/log": "1.0.*@dev",
+
+        "monolog/monolog": "1.12.*@dev",
+        "wazaari/monolog-mysql": ">1.0.0",
+        "bramus/monolog-colored-line-formatter": "dev-master",
+
+        "owasp/phprbac": "2.0.*@dev",
+        "lusitanian/oauth": "~0.3",
+        "respect/validation": "0.9.*@dev"
     },
     "extra":  {
         "branch-alias":  {
