@@ -1,66 +1,81 @@
-Tropotek 
-=====================================
+# tpl-tk004 website
 
-Published: 14 Dec 2012
+## Table of Contents
 
-Authors:
-  * Michael Mifsud <http://www.tropotek.com/>
+1.  [Synopsis](#Synopsis)
+2.  [Requirements ](#Requirements)
+3.  [Installation](#Installation)
+4.  [Credits](#Credits)
+5.  [Contributing](#Contributing)
+6.  [License](#License)
 
+##Synopsis
 
-Description
------------------
+This is a complete website based off the ttek frame work
 
-_________ is a PHP 5.3 full-stack web framework. It is written with speed and
-flexibility in mind. It allows developers to build better and easy to maintain
-websites with PHP.
+##Requirements
 
-_________ can be used to develop all kind of websites, from your personal blog
-to high traffic ones like Dailymotion or Yahoo! Answers.
+##Installation
 
+Direct from git
 
-Requirements
-------------
+    git clone https://github.com/lazeras/tpl-tk005.git
+    php composer.phar update
 
-_________ is only supported on PHP 5.3.2 and up.
+##Credits
 
-Be warned that PHP versions before 5.3.8 are known to be buggy and might not
-work for you:
+*   Mick Misfud
 
- * before PHP 5.3.4, if you get "Notice: Trying to get property of
-   non-object", you've hit a known PHP bug (see
-   https://bugs.php.net/bug.php?id=52083 and
-   https://bugs.php.net/bug.php?id=50027);
+    *   [Website](http://tropotek.com.au)
+    *   [GitHub](https://github.com/tropotek)
+    *   [Packagist](https://packagist.org/packages/ttek/)
 
- * before PHP 5.3.8, if you get an error involving annotations, you've hit a
-   known PHP bug (see https://bugs.php.net/bug.php?id=55156).
+*   Patrick Scott
 
- * PHP 5.3.16 has a major bug in the Reflection subsystem and is not suitable to
-   run (https://bugs.php.net/bug.php?id=62715)
+    *   [Website](http://kaoses.com)
+    *   [GitHub](https://github.com/lazeras)
+    *   [Packagist](https://packagist.org/users/lazeras/)
 
+## Contributing
 
-Installation
-------------
+1.  Fork it!
+2.  Create your feature branch: `git checkout -b my-new-feature`
+3.  Commit your changes: `git commit -am 'Add some feature'`
+4.  Push to the branch: `git push origin my-new-feature`
+5.  Submit a pull request :D
 
-The best way to install _________ is to download the _________.
+##License
 
+The MIT License (MIT) 
 
-Documentation
--------------
+Copyright (c) 2014 Patrick Scott
 
-If, like us, you think that _________ can help speed up your development and take
-the quality of your work to the next level, read the official [documentation][3].
+Permission is hereby granted, free of charge, to any person obtaining a copy 
 
+  of this software and associated documentation files (the “Software”), to deal 
 
-Contributing
-------------
+  in the Software without restriction, including without limitation the rights 
 
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
 
+  copies of the Software, and to permit persons to whom the Software is 
 
-Bugs
-----
+  furnished to do so, subject to the following conditions:
 
-To file bug reports please send email to: <info@tropotek.com>
+The above copyright notice and this permission notice shall be included in 
 
-Please include with your report: (1) the example input; (2) the output you
-expected; (3) the URL of the problem page
+  all copies or substantial portions of the Software.
 
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN 
+
+  THE SOFTWARE.

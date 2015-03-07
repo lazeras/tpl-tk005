@@ -1,0 +1,7 @@
+#!/bin/sh
+#  
+#
+# Make all the api Docs
+#
+# phpdoctor
+phpdoc build/phpDoctor.ini
