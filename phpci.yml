@@ -23,7 +23,7 @@ test:
         skip_classes: true
     php_loc:
         directory: "src"
-  lint:
+    lint:
 
 failure:
   email:
