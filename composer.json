@@ -57,7 +57,7 @@
         "ttek/tk-form": "1.2.*@dev",
         "ttek/tk-table": "~1.0",
         "ttek/tk-plugin": "1.2.*@dev",
-        "ttek/tk-user": "~1.0",
+        "ttek/tk-user": "1.2.*@dev",
         "ttek/tk-map": "~1.0",
         "ttek/tk-jslib": "~1.0",
         "leafo/lessphp": "~0.0",
