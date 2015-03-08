@@ -3,13 +3,9 @@ build_settings:
         - "vendor"
         - "bin"
         - "app"
-        - "vendor"
         - "bin"
         - "build"
         - "docs"
-setup:
-    composer:
-        action: "install"
 
 test:
     php_mess_detector:

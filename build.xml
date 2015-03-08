@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- define project name and default target -->
+<project name="tpl-tk005" default="build">
+  <property name="path.dive.root" value="/home/lazeras/public_html/sites" />
+  <property name="path.dive" value="${path.dive}/${phing.project.name}" />
+
+<resolvepath propertyName="repo.dir.resolved" file="${path.dive}/${phing.project.name}" />
+
+    <!-- empty related temp directory (delete old one and create new one) -->
+    <target name="prepare">
+    <echo msg="delete and create ${path.dive} directory" />
+    <delete dir="${path.dive}" includeemptydirs="true" verbose="true" failonerror="true" />
+  </target>
+    <!-- Clone repository -->
+    <gitclone
+            repository="git://github.com/path/to/repo/repo.git"
+            targetPath="${path.dive.root}" />
+
+    <target name="prepare" description="Clean up and create artifact directories">
+        <mkdir dir="${repo.dir.resolved}/data"/>
+        <chmod file="${repo.dir.resolved}/data" mode="0777" />
+        <delete dir="${repo.dir.resolved}/build/api"/>
+        <delete dir="${repo.dir.resolved}/build/code-browser"/>
+        <delete dir="${repo.dir.resolved}/build/coverage"/>
+        <delete dir="${repo.dir.resolved}/build/logs"/>
+        <delete dir="${repo.dir.resolved}/build/pdepend"/>
+        <delete dir="${repo.dir.resolved}/build/docs"/>
+
+        <mkdir dir="${repo.dir.resolved}/build/api"/>
+        <mkdir dir="${repo.dir.resolved}/build/code-browser"/>
+        <mkdir dir="${repo.dir.resolved}/build/coverage"/>
+        <mkdir dir="${repo.dir.resolved}/build/logs"/>
+        <mkdir dir="${repo.dir.resolved}/build/pdepend"/>
+        <mkdir dir="${repo.dir.resolved}/build/docs"/>
+    </target>
+
+
+    <target name="composer" description="Installing dependencies" depends="prepare">
+        <delete dir="${repo.dir.resolved}/vendor"/>
+        <composer command="install">
+            <arg value="--dev --optimize-autoloader"/>
+        </composer>
+    </target>
+
+    <fileset dir="${repo.dir.resolved}" id="sourceWithoutTests">
+        <include name="**/*.php"/>
+
+        <exclude name="*/test/"/>
+
+        <exclude name="*/Module.php"/>
+        <exclude name="*/config/module.config.php"/>
+        <exclude name="*/test/Bootstrap.php"/>
+    </fileset>
+
+    <fileset dir="${repo.dir.resolved}" id="sourceWithTests">
+        <include name="**/*.php"/>
+
+        <exclude name="*/Module.php"/>
+        <exclude name="*/config/module.config.php"/>
+        <exclude name="*/test/Bootstrap.php"/>
+    </fileset>
+
+    <fileset dir="${repo.dir.resolved}" id="tests">
+        <include name="*/test/**/*Test.php"/>
+    </fileset>
+
+    <target name="lint" description="Perform syntax check of sourcecode files" depends="prepare">
+        <phplint haltonfailure="true" cachefile="${repo.dir.resolved}/build/logs/lint.cache">
+            <fileset refid="sourceWithTests"/>
+        </phplint>
+    </target>
+
+    <target name="pdepend" description="Generate jdepend.xml and software metrics charts using PHP_Depend"
+            depends="prepare">
+        <phpdepend file="${repo.dir.resolved}">
+            <logger type="jdepend-xml" outfile="${repo.dir.resolved}/build/logs/jdepend.xml"/>
+            <logger type="jdepend-chart" outfile="${repo.dir.resolved}/build/pdepend/dependencies.svg"/>
+            <logger type="overview-pyramid" outfile="${repo.dir.resolved}/build/pdepend/overview-pyramid.svg"/>
+        </phpdepend>
+    </target>
+
+    <target name="phpmd" description="Generate pmd.xml using PHPMD" depends="prepare">
+        <phpmd file="${repo.dir.resolved}">
+            <formatter type="xml" outfile="${repo.dir.resolved}/build/logs/pmd.xml"/>
+        </phpmd>
+    </target>
+
+    <target name="phpcpd" description="Generate pmd-cpd.xml using PHPCPD" depends="prepare">
+        <phpcpd>
+            <formatter type="pmd" outfile="${repo.dir.resolved}/build/logs/pmd-cpd.xml"/>
+            <fileset refid="sourceWithTests"/>
+        </phpcpd>
+    </target>
+
+    <target name="phploc" description="Generate phploc.xml" depends="prepare">
+        <phploc reportType="xml" reportName="phploc"
+                reportDirectory="${repo.dir.resolved}/build/logs">
+            <fileset refid="sourceWithTests"/>
+        </phploc>
+    </target>
+
+    <target name="phpcs" description="Generate checkstyle.xml using PHP_CodeSniffer" depends="prepare">
+        <phpcodesniffer
+                standard="PSR2"
+                showSniffs="true"
+                showWarnings="true">
+            <fileset refid="sourceWithTests"/>
+            <formatter type="default" usefile="false"/>
+            <formatter type="checkstyle" outfile="${repo.dir.resolved}/build/logs/checkstyle-codesniffer.xml"/>
+        </phpcodesniffer>
+    </target>
+
+    <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser" depends="prepare">
+        <exec executable="phpcb">
+            <arg line="--log    ${repo.dir.resolved}/build/logs
+              --source ${repo.dir.resolved}
+              --output ${repo.dir.resolved}/build/code-browser"/>
+        </exec>
+    </target>
+
+    <apigen
+            source="classes"
+            destination="api"
+            exclude="*/tests/*"
+            title="My Project API Documentation"
+            deprecated="true"
+            todo="true"/>
+
+</project>
